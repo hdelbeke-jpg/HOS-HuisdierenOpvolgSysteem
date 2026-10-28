@@ -40,3 +40,28 @@ bijhouden van
     loopsheid
 
 Dit per huisdier
+
+Klasse Dier
+> id (volgnummer) dier - int
+> naam - String
+> type dier - String
+> geboortejaar - int
+> chipnummer - int
+> uiterlijke kenmerkien - String (opdelen in kleur vacht, kleur ogen, .... ?)
+> isGesteriliseerd - boolean (om dit type ook aan bod te laten komen)
+
+Klasse Metingen
+> id log - int
+> id dier (verwijzing naar Klasse Dier) - int
+> datum_tijd (datetime) - String
+> water_ml 
+> voeding_gram 
+> gewicht_kg
+
+ Klasse Medisch_dossier
+ > id log
+>id dier
+> datum
+> type (medicatie of dierenarts)
+> omschrijving (vb vaccinatie, ontworming, opvolging medicatie)
+> notitie
