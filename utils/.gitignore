@@ -1,0 +1,22 @@
+__pycache__/
+*.py[cod]
+*$py.class
+
+*.so
+
+# de database zelf
+dbproject.sqlite3
+project.db
+
+# instellingsbestanden
+settings.py
+.env
+
+# verborgen map van de virtuele omgeving
+
+.env
+.venv
+env/
+venv/
+
+# uit https://vives.pimaxplus.com/python/Nederlands/h08-project/
