@@ -65,3 +65,8 @@ Klasse Metingen
 > type (medicatie of dierenarts)
 > omschrijving (vb vaccinatie, ontworming, opvolging medicatie)
 > notitie
+
+#30/10/26: 
+klasses beginnen uitschrijven - redelijk ruw.
+Nog errorhandling erin verwerken, en ook de check als een verkeerde invoer wordt ingegeven dan verwacht
+Normaalgezien alle nodige documenten en de virtuele omgeving gemaakt
