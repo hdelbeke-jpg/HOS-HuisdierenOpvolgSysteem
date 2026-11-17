@@ -70,3 +70,9 @@ Klasse Metingen
 klasses beginnen uitschrijven - redelijk ruw.
 Nog errorhandling erin verwerken, en ook de check als een verkeerde invoer wordt ingegeven dan verwacht
 Normaalgezien alle nodige documenten en de virtuele omgeving gemaakt
+
+#17/11/26:
+extra opties toegevoegd (lijst van eigenaren oproepen, lijst van huisdieren oproepen, want je onthoudt niet altijd het ID-nummer van deze)
+code aangepast met try-except
+code leesbaarder proberen maken
+er was een foutmelding met de models-map, dus deze verwijderd en opnieuw
