@@ -76,3 +76,54 @@ extra opties toegevoegd (lijst van eigenaren oproepen, lijst van huisdieren opro
 code aangepast met try-except
 code leesbaarder proberen maken
 er was een foutmelding met de models-map, dus deze verwijderd en opnieuw
+
+#21/11/2026:
+readme aanpassen zoals beschreven staat in de opdracht:
+# HOS - Huisdieren Opvolg Systeem
+Het eerder beschreven project werd aangevuld met de mogelijkheid om het volledige logboek van een geselecteerd huisdier te exporteren naar een CSV-bestand.
+
+## Installatie & Configuratie
+
+Om het project op te starten (volgens de flow van de opdracht):
+
+1. **Virtuele omgeving aanmaken en activeren:**
+   - **Windows:**
+     ```bash
+     python -m venv .venv
+     .venv\Scripts\activate
+     ```
+   - **macOS / Linux:**
+     ```bash
+     python3 -m venv .venv
+     source .venv/bin/activate
+     ```
+
+2. **Packages installeren:**
+    mijn project gebruikt enkel ingebouwde Python-modules, dus er hoeven geen extra packages geïnstalleerd worden.
+    Ik voorzag toch een requirements.txt-documentje
+
+3. **Instellingenbestand configureren (config.py):**
+ Maak een lokaal instellingenbestand aan op basis van het voorbeeldbestand:
+        Windows: copy config.py.example config.py
+        macOS / Linux: cp config.py.example config.py
+
+Controleer of in config.py het pad naar de database als volgt is ingesteld:
+
+DB_PATH = "database/hos_huisdieren.db"
+
+Locatie van de database: hos_huisdieren.db (voor de opdracht beschikbaar via Toledo) in de map database/hos_huisdieren.db
+
+4. **Applicatie starten: Start het programma op via de terminal**
+
+python main.py
+
+5. ** Functionaliteiten van het menu**
+
+    Eigenaar toevoegen: Registreer een nieuwe eigenaar in het systeem.
+    Eigenaren bekijken: Overzicht tonen van alle geregistreerde eigenaren.
+    Huisdier toevoegen: Koppel een nieuw dier aan een bestaande eigenaar.
+    Huisdieren bekijken: Overzicht van alle dieren gegroepeerd per eigenaar.
+    Meting/log toevoegen: Registreer een meting of logboekregel (gewicht, voeding, etc.) voor een specifiek dier.
+    Logboek bekijken: Toon de historische metingen en notities van een gekozen dier in de console.
+    Logboek exporteren naar CSV: Exporteert alle metingen van een gekozen dier naar een overzichtelijk .csv-bestand.
+    Afsluiten: Het programma netjes beëindigen.
