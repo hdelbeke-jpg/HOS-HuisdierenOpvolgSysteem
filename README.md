@@ -117,13 +117,12 @@ Locatie van de database: hos_huisdieren.db (voor de opdracht beschikbaar via Tol
 
 python main.py
 
-5. ** Functionaliteiten van het menu**
-
-    Eigenaar toevoegen: Registreer een nieuwe eigenaar in het systeem.
-    Eigenaren bekijken: Overzicht tonen van alle geregistreerde eigenaren.
-    Huisdier toevoegen: Koppel een nieuw dier aan een bestaande eigenaar.
-    Huisdieren bekijken: Overzicht van alle dieren gegroepeerd per eigenaar.
-    Meting/log toevoegen: Registreer een meting of logboekregel (gewicht, voeding, etc.) voor een specifiek dier.
-    Logboek bekijken: Toon de historische metingen en notities van een gekozen dier in de console.
-    Logboek exporteren naar CSV: Exporteert alle metingen van een gekozen dier naar een overzichtelijk .csv-bestand.
-    Afsluiten: Het programma netjes beëindigen.
+5. ** Functionaliteiten van het menu:**
+Eigenaar toevoegen: Registreer een nieuwe eigenaar in het systeem.
+Eigenaren bekijken: Overzicht tonen van alle geregistreerde eigenaren.
+Huisdier toevoegen: Koppel een nieuw dier aan een bestaande eigenaar.
+Huisdieren bekijken: Overzicht van alle dieren gegroepeerd per eigenaar.
+Meting/log toevoegen: Registreer een meting of logboekregel (gewicht, voeding, etc.) voor een specifiek dier.
+Logboek bekijken: Toon de historische metingen en notities van een gekozen dier in de console.
+Logboek exporteren naar CSV: Exporteert alle metingen van een gekozen dier naar een overzichtelijk .csv-bestand.
+Afsluiten: Het programma netjes beëindigen.
