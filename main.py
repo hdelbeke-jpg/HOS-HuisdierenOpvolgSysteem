@@ -14,6 +14,7 @@ def toon_menu():
   print("4. Huisdieren bekijken")
   print("5. Meting/logboek toevoegen")
   print("6. Logboek van een huisdier bekijken")
+  print("7. Logboek van een huisdier exporteren naar CSV")
   print("0. Stoppen")
 
 
@@ -80,10 +81,10 @@ def main():
 
     while True:
       try:
-        keuze = int(input("Kies een optie (0-6): "))
-        if 0 <= keuze <= 6:
+        keuze = int(input("Kies een optie (0-7): "))
+        if 0 <= keuze <= 7:
           break
-        print("Gelieve een getal tussen 0 en 6 te kiezen.")
+        print("Gelieve een getal tussen 0 en 7 te kiezen.")
       except ValueError:
         print("Ongeldige invoer! Gelieve een getal in te vullen.")
 
@@ -289,6 +290,34 @@ def main():
         print(f"\n--- Logboek voor huisdier ID {id_huisdier} ---")
         for item in metingen:
           print(item)
+    # 7. Logboek exporteren naar CSV
+    elif keuze == 7:
+      dier_ids = toon_alle_huisdieren_per_eigenaar()
+      if len(dier_ids) == 0:
+        continue
+      
+      while True:
+        try:
+          id_huisdier = int(
+              input("\nVoer het ID van het huisdier in om het logboek te exporteren: ")
+          )
+          if id_huisdier in dier_ids:
+            break
+          print(
+              f"ID {id_huisdier} staat niet in het bovenstaande overzicht."
+              " Probeer opnieuw."
+          )
+        except ValueError:
+          print("Ongeldige invoer! Gelieve een geheel getal in te vullen.")
+      
+      bestandsnaam = f"logboek_{id_huisdier}.csv"
+      succes = db_manager.exporteer_logboek_naar_csv(DB_PATH, id_huisdier, bestandsnaam)
+
+      if succes: 
+        print(f"Logboek succesvol geëxporteerd naar {bestandsnaam}.")
+
+      else:
+        print("Er is een fout opgetreden bij het exporteren van het logboek.")  
 
     # 0. Afsluiten
     elif keuze == 0:

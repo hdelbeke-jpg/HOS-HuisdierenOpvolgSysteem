@@ -1,4 +1,5 @@
 import sqlite3
+import csv
 
 
 def initialize_database(db_path):
@@ -74,7 +75,6 @@ def haal_alle_eigenaren_op(db_path):
   try:
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-
     cursor.execute("SELECT id_eigenaar, naam FROM eigenaren")
     rijen = cursor.fetchall()
 
@@ -138,7 +138,6 @@ def haal_huisdieren_op_voor_eigenaar(db_path, id_eigenaar):
   try:
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-
     cursor.execute(
         """
             SELECT id_huisdier, naam, soort, geboortejaar, chipnummer, 
@@ -185,13 +184,11 @@ def voeg_meting_toe(
     print(f"Fout bij toevoegen van meting: {e}")
     return None
 
-
 def haal_logboek_op_voor_huisdier(db_path, id_huisdier):
   """Haalt alle metingen op voor een specifiek huisdier."""
   try:
     conn = sqlite3.connect(db_path)
     cursor = conn.cursor()
-
     cursor.execute(
         """
             SELECT id_log, id_huisdier, datum_tijd, type, waarde, eenheid, notitie
@@ -207,3 +204,48 @@ def haal_logboek_op_voor_huisdier(db_path, id_huisdier):
   except sqlite3.Error as e:
     print(f"Fout bij ophalen van logboek: {e}")
     return []
+
+
+def exporteer_logboek_naar_csv(db_path, id_huisdier, naam_huisdier=None):
+  """Exporteert het logboek van een specifiek huisdier naar een CSV-bestand."""
+  try:
+    if not naam_huisdier:
+      conn = sqlite3.connect(db_path)
+      cursor = conn.cursor()
+      cursor.execute(
+          "SELECT naam FROM huisdieren WHERE id_huisdier = ?", (id_huisdier,)
+      )
+      rij = cursor.fetchone()
+      conn.close()
+      if rij:
+        naam_huisdier = rij[0]
+      else:
+        naam_huisdier = f"dier_{id_huisdier}"
+
+    metingen = haal_logboek_op_voor_huisdier(db_path, id_huisdier)
+    if not metingen or len(metingen) == 0:
+      return "GEEN_METINGEN"
+
+    bestands_naam = naam_huisdier.strip().replace(" ", "_")
+    bestandsnaam = f"logboek_{bestands_naam}_{id_huisdier}.csv"
+
+    with open(bestandsnaam, mode="w", newline="") as f:
+      writer = csv.writer(f, delimiter=",")
+      writer.writerow([
+          "Huisdier",
+          "ID Log",
+          "Datum/Tijd",
+          "Type",
+          "Waarde",
+          "Eenheid",
+          "Notitie",
+      ])
+
+      for m in metingen:
+        writer.writerow([naam_huisdier, m[0], m[2], m[3], m[4], m[5], m[6]])
+
+    return bestandsnaam
+
+  except Exception as e:
+    print(f"Fout bij wegschrijven van CSV: {e}")
+    return "FOUT"
